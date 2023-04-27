@@ -1,0 +1,6 @@
+server:
+  port: 8081
+
+door:
+  ip: 1001,1002
+

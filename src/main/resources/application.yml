@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    username: zeekroot
+    password: 5peER!DevSit12DB
+    url: jdbc:mysql://rm-bp1si09817sip4q86.mysql.rds.aliyuncs.com:3306/ucds-dev?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC&allowMultiQueries=true
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 30
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+   active: dev
+

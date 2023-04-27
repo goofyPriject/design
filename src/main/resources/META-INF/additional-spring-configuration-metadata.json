@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "door.ip",
+      "type": "java.lang.String",
+      "description": "Description for door.ip."
+  }
+] }
