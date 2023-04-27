@@ -111,7 +111,7 @@ public class DoJoinPoint {
         final Matcher matcher = pattern.matcher(string);
         System.out.println(matcher.matches());
 
-        //测试提交代码
+        //删除提交代码
 
         //或者使用
         Pattern.matches(regex, string);
