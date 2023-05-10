@@ -23,17 +23,17 @@ public class GroupController {
 
     @GetMapping(value = "/v1/openUrl")
     public String openUrl(HttpServletResponse resp) throws IOException {
-        String path = Objects.requireNonNull(this.getClass().getClassLoader().getResource("")).getPath();//注意getResource("")里面是空字符串
-        String str = path+"com/example/design/util/东疆备案表.xlsx";
-        File file = new File(str);
-        FileInputStream fileInputStream = new FileInputStream(file);
-        System.out.println(path);
+//        String path = Objects.requireNonNull(this.getClass().getClassLoader().getResource("")).getPath();//注意getResource("")里面是空字符串
+//        String str = path+"com/example/design/util/东疆备案表.xlsx";
+//        File file = new File(str);
+//        FileInputStream fileInputStream = new FileInputStream(file);
+//        System.out.println(path);
         return "redirect:http://www.baidu.com/";
     }
 
 
     @GetMapping(value = "/v1/invoke")
-    public void invoke(HttpServletResponse resp) throws Exception{
-
+    public String invoke(HttpServletResponse resp) throws Exception{
+        return "success";
     }
 }
