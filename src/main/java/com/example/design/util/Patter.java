@@ -12,7 +12,12 @@ public class Patter {
         final Matcher matcher = pattern.matcher(string);
         System.out.println(matcher.matches());
 
-        //删除提交代码
+        String reg = "^[A-Za-z0-9,]+$";
+        String str = ",";
+        Pattern pattern1 = Pattern.compile(reg, Pattern.MULTILINE);
+        Matcher matcher1 = pattern1.matcher(str);
+        System.out.println(matcher1.matches());
+
 
         //或者使用
         Pattern.matches(regex, string);
