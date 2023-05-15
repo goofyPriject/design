@@ -14,7 +14,7 @@ public class ThreadPool {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    ExecutorService executor = Executors.newFixedThreadPool(5);
+    private final ExecutorService executor = Executors.newFixedThreadPool(5);
 
     public void submit() {
         int max_size = 100000;
