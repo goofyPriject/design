@@ -4,6 +4,8 @@ import com.example.design.domain.ErrorTemplate;
 import com.example.design.domain.UserInfo;
 import com.example.design.domain.UserRequest;
 import com.example.design.door.annotation.DoDoor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,9 @@ import java.util.*;
 
 @Controller
 public class GroupController {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 
     @DoDoor(key = "UserRequest")
     @PostMapping(value = "/v1/selectUserInfo")
@@ -33,7 +38,8 @@ public class GroupController {
 
 
     @GetMapping(value = "/v1/invoke")
-    public String invoke(HttpServletResponse resp) throws Exception{
+    public @ResponseBody String  invoke(HttpServletResponse resp) throws Exception{
+        logger.info("------->logger");
         return "success";
     }
 }

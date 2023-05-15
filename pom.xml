@@ -90,6 +90,12 @@
         </dependency>
 
         <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
+        <dependency>
             <groupId>taobao-sdk-java-auto_1671160037462-20221217.jar</groupId>
             <artifactId>taobao-sdk-java-auto_1671160037462-20221217.jar</artifactId>
             <version>0.0.1</version>

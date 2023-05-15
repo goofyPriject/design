@@ -1,5 +1,8 @@
 package com.example.design.stream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,6 +11,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ThreadPool {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     ExecutorService executor = Executors.newFixedThreadPool(5);
 
@@ -32,7 +37,9 @@ public class ThreadPool {
     }
 
     public String execute(List<String> objects) {
+        logger.info("ssss");
         return "";
     }
+
 
 }
