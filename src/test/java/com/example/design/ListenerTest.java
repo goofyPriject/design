@@ -1,22 +1,22 @@
 
 package com.example.design;
 
-import com.example.design.demo.DemoA;
 import com.example.design.demo.DemoB;
 import com.example.design.listener.LotteryResult;
 import com.example.design.listener.LotteryService;
 import com.example.design.listener.LotteryServiceImpl;
+import com.example.design.strategy.generic.GenericInterface;
+import com.example.design.strategy.generic.HandlerFactory;
+import com.example.design.strategy.spring.ShopRankHandler;
+import com.example.design.strategy.spring.ShopRankHandlerFactory;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.PatternMatchUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 @SpringBootTest
 public class ListenerTest {
@@ -32,6 +32,10 @@ public class ListenerTest {
     public void testExtend() {
         DemoB demoB = new DemoB();
         demoB.getA();
+    }
+
+    @Test
+    public void invokeStrategy() {
 
     }
 
