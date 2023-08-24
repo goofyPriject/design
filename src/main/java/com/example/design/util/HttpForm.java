@@ -1,5 +1,6 @@
 package com.example.design.util;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -30,6 +31,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -81,4 +83,12 @@ public class HttpForm {
         System.out.println(content);
     }
 
+    public static void main(String[] args) {
+        JSONObject order = new JSONObject(new LinkedHashMap<>());
+        order.put("appkey", "appKey");
+        order.put("sessionkey", "sessionKey");
+        order.put("method", "gy.erp.trade.add");
+        String s = JSONObject.toJSONString(order);
+        System.out.println(s);
+    }
 }
