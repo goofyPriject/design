@@ -1,7 +1,10 @@
 package com.example.design.util;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Patter {
 
@@ -23,7 +26,8 @@ public class Patter {
         Pattern.matches(regex, string);
 
         //或者使用
-        System.out.println(string.matches(regex));
+        int i = 20;
+        System.out.println(i/100+1);
     }
 
 }

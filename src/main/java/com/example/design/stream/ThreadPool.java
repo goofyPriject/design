@@ -1,11 +1,14 @@
 package com.example.design.stream;
 
+import com.example.design.domain.Person;
+import com.example.design.domain.UserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -39,6 +42,23 @@ public class ThreadPool {
     public String execute(List<String> objects) {
         logger.info("ssss");
         return "";
+    }
+
+    public static void main(String[] args) {
+        List<Person> personList = Arrays.asList(
+                new Person(1, "Alice"),
+                new Person(2, "Bob"),
+                new Person(3, "Charlie"),
+                new Person(4, "David")
+        );
+
+        Map<Integer, String> idNameMap = personList
+                .stream()
+                .collect(Collectors.toMap(
+                        Person::getId,
+                        Person::getName
+                ));
+        System.out.println(idNameMap);
     }
 
 
