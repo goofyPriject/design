@@ -5,8 +5,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.qimencloud.api.DefaultQimenCloudClient;
 import com.qimencloud.api.scenetp8z6548i2.request.GyErpTradeDeliverysGetRequest;
 import com.qimencloud.api.scenetp8z6548i2.request.GyErpTradeDeliverysHistoryGetRequest;
+import com.qimencloud.api.scenetp8z6548i2.request.GyErpTradeGetRequest;
+import com.qimencloud.api.scenetp8z6548i2.request.GyErpTradeHistoryGetRequest;
 import com.qimencloud.api.scenetp8z6548i2.response.GyErpTradeDeliverysGetResponse;
 import com.qimencloud.api.scenetp8z6548i2.response.GyErpTradeDeliverysHistoryGetResponse;
+import com.qimencloud.api.scenetp8z6548i2.response.GyErpTradeGetResponse;
+import com.qimencloud.api.scenetp8z6548i2.response.GyErpTradeHistoryGetResponse;
+import com.taobao.api.ApiException;
 
 public class GyMethodService {
     /**
@@ -72,8 +77,88 @@ public class GyMethodService {
         return jsonArray;
     }
 
+    public static JSONArray gyErpTradeHistoryGet(String tradeCode) {
+        JSONArray orders = new JSONArray();
+        DefaultQimenCloudClient client = new DefaultQimenCloudClient(URL, APPKEY, APP_SECRET, FORMAT);
+        GyErpTradeHistoryGetRequest gyErpTradeHistoryGetRequest = new GyErpTradeHistoryGetRequest();
+        gyErpTradeHistoryGetRequest.setTargetAppKey(TARGET_APPKEY);//管易的奇门appkey
+        gyErpTradeHistoryGetRequest.setAppkey(APPKEY_GY);//管易的appkey
+        gyErpTradeHistoryGetRequest.setSessionkey(SESSION_KEY);//管易的sessionkey
+        gyErpTradeHistoryGetRequest.setCode(tradeCode);
+        try {
+            GyErpTradeHistoryGetResponse response = client.execute(gyErpTradeHistoryGetRequest);
+            String body = JSONObject.parseObject(JSONObject.toJSONString(response))
+                    .getString("body");
+            orders = JSONObject.parseObject(JSONObject.parseObject(body)
+                    .getString("response")).getJSONArray("orders");
+        } catch (ApiException e) {
+            e.printStackTrace();
+        }
+        return orders;
+    }
+
+    public static JSONArray gyErpTradeGet(String tradeCode) {
+        JSONArray orders = new JSONArray();
+        DefaultQimenCloudClient client = new DefaultQimenCloudClient(URL, APPKEY, APP_SECRET, FORMAT);
+        GyErpTradeGetRequest gyErpTradeGetRequest = new GyErpTradeGetRequest();
+        gyErpTradeGetRequest.setTargetAppKey(TARGET_APPKEY);//管易的奇门appkey
+        gyErpTradeGetRequest.setAppkey(APPKEY_GY);//管易的appkey
+        gyErpTradeGetRequest.setSessionkey(SESSION_KEY);//管易的sessionkey
+        gyErpTradeGetRequest.setCode(tradeCode);
+        try {
+            GyErpTradeGetResponse response = client.execute(gyErpTradeGetRequest);
+            String body = JSONObject.parseObject(JSONObject.toJSONString(response))
+                    .getString("body");
+            orders = JSONObject.parseObject(JSONObject.parseObject(body)
+                    .getString("response")).getJSONArray("orders");
+        } catch (ApiException e) {
+            e.getMessage();
+        }
+        return orders;
+    }
+
+    public static JSONArray gyErpTradeDeliveryHistoryGet(String code) {
+        JSONArray orders = new JSONArray();
+        DefaultQimenCloudClient client = new DefaultQimenCloudClient(URL, APPKEY, APP_SECRET, FORMAT);
+        GyErpTradeDeliverysHistoryGetRequest gyErpTradeDeliverysHistoryGetRequest = new GyErpTradeDeliverysHistoryGetRequest();
+        gyErpTradeDeliverysHistoryGetRequest.setTargetAppKey(TARGET_APPKEY);//管易的奇门appkey
+        gyErpTradeDeliverysHistoryGetRequest.setAppkey(APPKEY_GY);//管易的appkey
+        gyErpTradeDeliverysHistoryGetRequest.setSessionkey(SESSION_KEY);//管易的sessionkey
+        gyErpTradeDeliverysHistoryGetRequest.setCode(code);
+        try {
+            GyErpTradeDeliverysHistoryGetResponse responseHistory = client.execute(gyErpTradeDeliverysHistoryGetRequest);
+            String bodyHistory = JSONObject.parseObject(JSONObject.toJSONString(responseHistory))
+                    .getString("body");
+            orders = JSONObject.parseObject(JSONObject.parseObject(bodyHistory)
+                    .getString("response")).getJSONArray("deliverys");
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return orders;
+    }
+
+    public static JSONArray gyErpTradeDeliveryGet(String code) {
+        JSONArray orders = new JSONArray();
+        DefaultQimenCloudClient client = new DefaultQimenCloudClient(URL, APPKEY, APP_SECRET, FORMAT);
+        GyErpTradeDeliverysGetRequest gyErpTradeDeliverysGetRequest = new GyErpTradeDeliverysGetRequest();
+        gyErpTradeDeliverysGetRequest.setTargetAppKey(TARGET_APPKEY);//管易的奇门appkey
+        gyErpTradeDeliverysGetRequest.setAppkey(APPKEY_GY);//管易的appkey
+        gyErpTradeDeliverysGetRequest.setSessionkey(SESSION_KEY);//管易的sessionkey
+        gyErpTradeDeliverysGetRequest.setOuterCode(code);
+        try {
+            GyErpTradeDeliverysGetResponse response = client.execute(gyErpTradeDeliverysGetRequest);
+            String body = JSONObject.parseObject(JSONObject.toJSONString(response))
+                    .getString("body");
+            orders = JSONObject.parseObject(JSONObject.parseObject(body)
+                    .getString("response")).getJSONArray("deliverys");
+        } catch (ApiException e) {
+            e.getMessage();
+        }
+        return orders;
+    }
+
     public static void main(String[] args) {
-        System.out.print(queryDeliverys());
+        System.out.print(gyErpTradeDeliveryGet("AD202309200030100040218124"));
     }
 
 
