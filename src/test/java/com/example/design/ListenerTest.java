@@ -1,22 +1,25 @@
 
 package com.example.design;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.design.demo.DemoB;
 import com.example.design.listener.LotteryResult;
 import com.example.design.listener.LotteryService;
 import com.example.design.listener.LotteryServiceImpl;
-import com.example.design.strategy.generic.GenericInterface;
-import com.example.design.strategy.generic.HandlerFactory;
-import com.example.design.strategy.spring.ShopRankHandler;
-import com.example.design.strategy.spring.ShopRankHandlerFactory;
+import com.example.design.util.JDStockQueryUtil;
+import com.example.design.util.JkyMzInventoryImpl;
+import com.example.design.util.SFStockQueryUtil;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.PatternMatchUtils;
+import org.springframework.util.StopWatch;
 
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 public class ListenerTest {
@@ -35,8 +38,12 @@ public class ListenerTest {
     }
 
     @Test
-    public void invokeStrategy() {
-
+    public void invokeStrategy() throws InterruptedException {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        Thread.sleep(1);
+        stopWatch.stop();
+        System.out.println(stopWatch.getTotalTimeMillis());
     }
 
 
@@ -44,7 +51,7 @@ public class ListenerTest {
     public static void main(String[] args) {
         String s = "p1";
         List<String> list = new ArrayList<>();
-        list.add("p2");
+        list.add("p1");
         list.add("p1,p2");
         list.add("p1,p2,p3");
         boolean b =list.stream().anyMatch(a-> PatternMatchUtils.simpleMatch(s.split(","),a));
@@ -58,6 +65,11 @@ public class ListenerTest {
             if (t.contains(str)) return true;
         }
         return false;
+    }
+
+    @Test
+    public  void selectWare() throws Exception {
+        JkyMzInventoryImpl.syncInventory();
     }
 
 
