@@ -1,25 +1,17 @@
 
-package com.example.design;
+package cn.aireco.platform;
 
-import com.alibaba.fastjson.JSONObject;
-import com.example.design.demo.DemoB;
-import com.example.design.listener.LotteryResult;
-import com.example.design.listener.LotteryService;
-import com.example.design.listener.LotteryServiceImpl;
-import com.example.design.util.JDStockQueryUtil;
-import com.example.design.util.JkyMzInventoryImpl;
-import com.example.design.util.SFStockQueryUtil;
+import cn.aireco.platform.demo.DemoB;
+import cn.aireco.platform.listener.LotteryResult;
+import cn.aireco.platform.listener.LotteryService;
+import cn.aireco.platform.listener.LotteryServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.PatternMatchUtils;
 import org.springframework.util.StopWatch;
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @SpringBootTest
 public class ListenerTest {
@@ -68,8 +60,20 @@ public class ListenerTest {
     }
 
     @Test
+    public static String test() {
+        String str = "1";
+        try {
+            throw new Exception("---");
+        } catch (Exception e) {
+            str = "2";
+        }
+        return str;
+    }
+
+
+    @Test
     public  void selectWare() throws Exception {
-        JkyMzInventoryImpl.syncInventory();
+
     }
 
 

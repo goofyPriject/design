@@ -1,4 +1,4 @@
-package com.example.design;
+package cn.aireco.platform;
 
 
 import org.junit.jupiter.api.Test;
