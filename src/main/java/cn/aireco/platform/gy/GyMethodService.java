@@ -112,10 +112,7 @@ public class GyMethodService {
         gyErpTradeGetRequest.setTargetAppKey(TARGET_APPKEY);//管易的奇门appkey
         gyErpTradeGetRequest.setAppkey(APPKEY_GY);//管易的appkey
         gyErpTradeGetRequest.setSessionkey(SESSION_KEY);//管易的sessionkey
-        gyErpTradeGetRequest.setPageNo("1");
-        gyErpTradeGetRequest.setPageSize("10");
-        gyErpTradeGetRequest.setStartDate("2023-10-19 00:00:00");
-        gyErpTradeGetRequest.setEndDate("2023-10-19 23:59:59");
+        gyErpTradeGetRequest.setPlatformCode(tradeCode);
         try {
             GyErpTradeGetResponse response = client.execute(gyErpTradeGetRequest);
             String body = JSONObject.parseObject(JSONObject.toJSONString(response))
@@ -135,10 +132,6 @@ public class GyMethodService {
         gyErpTradeDeliverysHistoryGetRequest.setTargetAppKey(TARGET_APPKEY);//管易的奇门appkey
         gyErpTradeDeliverysHistoryGetRequest.setAppkey(APPKEY_GY);//管易的appkey
         gyErpTradeDeliverysHistoryGetRequest.setSessionkey(SESSION_KEY);//管易的sessionkey
-        gyErpTradeDeliverysHistoryGetRequest.setPageNo("1");
-        gyErpTradeDeliverysHistoryGetRequest.setPageSize("10");
-        gyErpTradeDeliverysHistoryGetRequest.setStartDeliveryDate("2023-10-19 00:00:00");
-        gyErpTradeDeliverysHistoryGetRequest.setEndDeliveryDate("2023-10-19 23:59:59");
         try {
             GyErpTradeDeliverysHistoryGetResponse responseHistory = client.execute(gyErpTradeDeliverysHistoryGetRequest);
             String bodyHistory = JSONObject.parseObject(JSONObject.toJSONString(responseHistory))
@@ -178,13 +171,8 @@ public class GyMethodService {
         JSONObject stock = new JSONObject(new LinkedHashMap<>());
         stock.put("appkey", "165838");
         stock.put("sessionkey", "d332407e15754865aefd0b891e752741");
-        stock.put("method", "gy.erp.trade.return.get");
-        stock.put("page_no", 1);
-        stock.put("page_size", 100);
-        stock.put("in_begin_time", "2023-10-24 00:00:00");//入库时间开始段
-        stock.put("in_end_time", "2023-10-30 23:00:00");//入库时间结束段
-        stock.put("cancel", 0);
-        stock.put("platform_code", "231020-259690351441219");
+        stock.put("method", "gy.erp.items.get");
+        stock.put("code", "5025155070703");
         String sign = GyySign.generateSign(stock, "7b756458336540d2afa78e5bad493959");
         stock.put("sign", sign);
         Map<String, String> maps = new HashMap<>();
@@ -201,7 +189,8 @@ public class GyMethodService {
     }
 
     public static void main(String[] args) {
-        System.out.print(post());
+
+        System.out.print(gyErpTradeGet("231230-482098625962843"));
     }
 
 
