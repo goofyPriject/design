@@ -104,6 +104,21 @@
             </systemPath>
         </dependency>
         <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.3.10</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.7.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>30.1-jre</version> <!-- 请根据需要选择合适的版本 -->
+        </dependency>
+        <dependency>
             <groupId>taobao-sdk-java-auto_1671160037462-20221217-source.jar</groupId>
             <artifactId>taobao-sdk-java-auto_1671160037462-20221217-source.jar</artifactId>
             <version>0.0.1</version>
