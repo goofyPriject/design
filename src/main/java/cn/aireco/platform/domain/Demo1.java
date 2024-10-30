@@ -1,9 +1,10 @@
 package cn.aireco.platform.domain;
 
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -297,6 +298,19 @@ public class Demo1 {
 
 
     public static void main(String[] args) {
-        System.out.println(addressFormat("浙江省 杭州市 滨江区 滨康路与长河路交叉口东北方向158米保利NPUB联合社区11号楼2702[2123]"));
+//
+//        String a = "{\"a\":\"1,2,3\",\"b\":\"1,2,3\"}";
+//        JSONObject jsonObject = JSONObject.parseObject(a, JSONObject.class);
+//        if (!jsonObject.containsKey("a")) continue;
+//        String a1 = jsonObject.getString("a");
+//        boolean b = Arrays.asList(a1.split(",")).contains("2");
+//        if (!b) continue;
+
+    }
+
+    public static Date getBeforeOneDayTime(Integer days) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, -days);
+        return calendar.getTime();
     }
 }

@@ -4,6 +4,7 @@ import org.apache.logging.log4j.util.Strings;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * <p>Message codec functions.</p>
@@ -207,5 +208,10 @@ public final class Numeric {
         return value.signum() == 0 ||
                 value.scale() <= 0 ||
                 value.stripTrailingZeros().scale() <= 0;
+    }
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("a", "B");
+        System.out.println(Arrays.toString(strings.toArray(new Object[0])));
     }
 }
